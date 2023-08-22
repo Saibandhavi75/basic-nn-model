@@ -14,7 +14,7 @@ Build your training and test set from the dataset, here we are making the neural
 
 ## Neural Network Model
 
-![output](?raw=true)
+![output](https://github.com/Saibandhavi75/basic-nn-model/blob/main/dl1.png?raw=true)
 
 ## DESIGN STEPS
 
@@ -89,20 +89,20 @@ model.predict(X_n1_1)
 ```
 
 ## Dataset Information
-![ouput](?raw=true)
+![ouput](https://github.com/Saibandhavi75/basic-nn-model/blob/main/dl2.png?raw=true)
 
 ## OUTPUT
 
 ### Training Loss Vs Iteration Plot
 
-![ouput](?raw=true)
+![ouput](https://github.com/Saibandhavi75/basic-nn-model/blob/main/dl3.png?raw=true)
 
 ### Test Data Root Mean Squared Error
 
-![ouput](?raw=true)
+![ouput](https://github.com/Saibandhavi75/basic-nn-model/blob/main/dl4.png?raw=true)
 ### New Sample Data Prediction
 
-![ouput](?raw=true)
+![ouput](https://github.com/Saibandhavi75/basic-nn-model/blob/main/dl5.png?raw=true)
 
 ## RESULT
 Thus a neural network regression model for the given dataset is written and executed successfully.
