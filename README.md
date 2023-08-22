@@ -6,11 +6,15 @@ To develop a neural network regression model for the given dataset.
 
 ## THEORY
 
-Explain the problem statement
+Neural networks consist of simple input/output units called neurons. These units are interconnected and each connection has a weight associated with it. Neural networks are flexible and can be used for both classification and regression. In this article, we will see how neural networks can be applied to regression problems.
+
+Regression helps in establishing a relationship between a dependent variable and one or more independent variables. Regression models work well only when the regression equation is a good fit for the data. Although neural networks are complex and computationally expensive, they are flexible and can dynamically pick the best type of regression, and if that is not enough, hidden layers can be added to improve prediction.
+
+Build your training and test set from the dataset, here we are making the neural network 3 hidden layer with activation layer as relu and with their nodes in them. Now we will fit our dataset and then predict the value.
 
 ## Neural Network Model
 
-Include the neural network model diagram.
+![output](?raw=true)
 
 ## DESIGN STEPS
 
@@ -43,25 +47,62 @@ Plot the performance plot
 Evaluate the model with the testing data.
 
 ## PROGRAM
-
-Include your code here
+```
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from google.colab import auth
+import gspread
+from google.auth import default
+auth.authenticate_user()
+creds, _ = default()
+gc = gspread.authorize(creds)
+worksheet = gc.open('dl-1').sheet1
+rows = worksheet.get_all_values()
+dataset1 = pd.DataFrame(rows[1:], columns=rows[0])
+dataset1 = dataset1.astype({'input':'float'})
+dataset1 = dataset1.astype({'output':'float'})
+dataset1.head()
+X=dataset1[{'input'}].values
+Y=dataset1[{'output'}].values
+X
+X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size = 0.33, random_state = 33)
+Scaler = MinMaxScaler()
+Scaler.fit(X_train)
+X_train1 = Scaler.transform(X_train)
+model = Sequential([
+  Dense(8,activation = 'relu'),
+  Dense(10,activation ='relu'),
+  Dense(1)
+])
+model.compile(optimizer='rmsprop',loss='mse')
+model.fit(X_train1,Y_train,epochs=2000)
+loss_df = pd.DataFrame(model.history.history)
+loss_df.plot()
+X_test1 = Scaler.transform(X_test)
+model.evaluate(X_test1,Y_test)
+X_n1 = [[30]]
+X_n1_1 = Scaler.transform(X_n1)
+model.predict(X_n1_1)
+```
 
 ## Dataset Information
-
-Include screenshot of the dataset
+![ouput](?raw=true)
 
 ## OUTPUT
 
 ### Training Loss Vs Iteration Plot
 
-Include your plot here
+![ouput](?raw=true)
 
 ### Test Data Root Mean Squared Error
 
-Find the test data root mean squared error
-
+![ouput](?raw=true)
 ### New Sample Data Prediction
 
-Include your sample input and output here
+![ouput](?raw=true)
 
 ## RESULT
+Thus a neural network regression model for the given dataset is written and executed successfully.
